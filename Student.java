@@ -10,7 +10,7 @@ public class Student extends Member {
         super(name);
     }
 
-    // getters
+    // GETTERS
 
     public int getLevel() {
         return level;
@@ -24,7 +24,7 @@ public class Student extends Member {
         return grade;
     }
 
-    // setters
+    // SETTERS
     public void changeSanity(int change) {
         mentalSanity += change;
     }
@@ -32,6 +32,13 @@ public class Student extends Member {
     public void changeGrade(int change) {
         grade += change;
     }
+    // METHODS
+
+
+    // there should be an encounter item! we need to implementent that
+
+
+
 
     public String respond(Teacher t) {
         // will call a teacher's method to respond
