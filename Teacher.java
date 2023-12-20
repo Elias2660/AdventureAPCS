@@ -1,4 +1,4 @@
-public class Teacher extends Member{
+public class Teacher extends Member {
     private String name;
     private int HP;
     private double avgGrade;
@@ -8,27 +8,25 @@ public class Teacher extends Member{
         this.HP = HP;
     }
 
-    // getters
-    public String getName() {
-        return this.getName();
-    }
-
     public String respond(Student s) {
 
         // will get call a students's response method to continiously respond
         int choice = (int) (Math.random() * 3);
+        String response;
         if (HP == 0) {
             System.out.println("School Year is over!");
             System.out.println("You have Survived");
             return s.stats();
         }
+        //next step would be to make sure to implement this correctly
         if (choice == 0) {
-            return this.giveTest(s);
+            response =  this.giveTest(s);
         } else if (choice == 1) {
-            return this.giveEC(s);
+            response =  this.giveEC(s);
         } else {
-            return this.giveHomework(s);
+            response =  this.giveHomework(s);
         }
+        return response + s.respond(this);
     }
 
     // special actions
@@ -37,18 +35,17 @@ public class Teacher extends Member{
         s.changeGrade(-2 * s.getLevel());
         s.changeSanity(-3 * s.getLevel());
         HP--;
-        System.out.printf("Teacher has given you a test. You have lost %d points and grade is now %d",
-                2 * s.getLevel(), s.getGrade());
-        return "Your Hp is" + HP;
+        return String.format("Teacher %s has given you a test. You have lost %d points and grade is now %d",
+                this.getName(), 2 * s.getLevel(), s.getGrade());
 
     }
 
     public String giveEC(Student s) {
         s.changeGrade(1);
         s.changeSanity(15 - s.getLevel());
-
         HP--;
-        return "Your Hp is" + HP;
+        return String.format("Teacher %s has given %s extra credit. Your sanity is now %d and grade is now %d",
+                this.getName(), s.getName(), s.getMentalSanity(), s.getGrade());
 
     }
 
@@ -56,12 +53,12 @@ public class Teacher extends Member{
         s.changeGrade(-s.getLevel());
         s.changeSanity(-1);
         HP--;
-        System.out.printf("Teacher has given you homework. Your sanity is nwo %d and grade is now %d",
-                s.getMentalSanity(), s.getGrade());
+        System.out.printf("Teacher %s has given %s homework. Your sanity is nwo %d and grade is now %d \n",
+                this.getName(), s.getName(), s.getMentalSanity(), s.getGrade());
         return "Your Hp is" + HP;
     }
 
     public String stats() {
-        return String.format(" Teacher Name: %s \n  Room: %d \n HP: %d \n", name, avgGrade, HP);
+        return String.format(" Teacher  %s \n  Room: %d \n HP: %d \n", name, avgGrade, HP);
     }
 }

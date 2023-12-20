@@ -33,49 +33,49 @@ public class Student extends Member {
         grade += change;
     }
 
-    // methods
-    @Override
-    public String stats() {
-        return String.format("Student Name: %s \n Level: %d \n Grade: %d \n Mental Sanity: %d \n", this.getName(),
-                level, grade,
-                mentalSanity);
-    }
-
     public String respond(Teacher t) {
         // will call a teacher's method to respond
         try {
             Scanner sc = new Scanner(System.in);
             Boolean valid = false;
             if (grade <= 65) {
-                System.out.println("You have failed the class");
-                System.out.println("Game over");
-                System.exit(0);
+                sc.close();
+                return this.getName() + " has failed \n Game over";
             } else if (mentalSanity <= 0) {
-                System.out.println("You have gone insane");
-                System.out.println("Game over");
-                System.exit(0);
+                sc.close();
+                return this.getName() + "have gone insane \n Game over";
             }
+            //for scoping
+            String change = "ERROR";
+            String response = "ERROR";
             while (!valid) {
                 // giveing choices
-                System.out.println("What would you like to do?");
+                System.out.printf("Student %s is in a class with %s! \n", this.getName(), t.getName());
+                System.out.println("What should they do?");
                 System.out.println("1 => Study");
                 System.out.println("2 => Sleep Early");
                 System.out.println("3 => Ignore");
+
                 int choice = sc.nextInt();
+                sc.close();
+                System.out.println();
                 if (choice == 1) {
                     valid = !valid;
-                    return this.study() + "\n" + t.respond(this);
+                    change = this.study();
+
                 } else if (choice == 2) {
                     valid = !valid;
-                    return this.sleepEarly() + "\n" + t.respond(this);
+                    change = this.sleepEarly();
                 } else if (choice == 3) {
+                    change = this.ignore();
                     valid = !valid;
-                    return this.ignore() + "\n" + t.respond(this);
                 }
-                t.respond(this);
-                sc.close();
+                response = t.respond(this);
+
             }
-            return this.stats();
+            return change + response;
+            // we have to implement stats somehow but I don't know how
+            // return this.stats();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return "";
@@ -85,23 +85,32 @@ public class Student extends Member {
     public String study() {
         grade += 3;
         mentalSanity -= level;
-        System.out.printf("You have studied! your grade is now %d and your mental sanity is now %d \n", grade, level);
-        return "\n Student chose to study";
+        return String.format("Student %s have studied! their grade is now %d and their mental sanity is now %d \n",
+                this.getName(), grade, level);
     }
 
     public String sleepEarly() {
         mentalSanity += 3;
         grade -= level;
-        System.out.printf("You have slept early! your grade is now %d and your mental sanity is now %d \n", grade,
+        return String.format("Student %s slept early! their grade is now %d and their mental sanity is now %d \n",
+                this.getName(), grade,
                 level);
-        return "\n Student chose to sleep early";
 
     }
 
     public String ignore() {
         grade -= 5;
-        System.out.printf("You have studied! your grade is now %d and your mental sanity is still %d \n", grade, level);
-        return "\n Student chose to ignore";
+
+        return String.format(
+                "Student %s decided to ignore everything! their grade is now %d and their mental sanity is still %d \n",
+                this.getName(), grade, level);
+    }
+
+    @Override
+    public String stats() {
+        return String.format("Student Name: %s \n Level: %d \n Grade: %d \n Mental Sanity: %d \n", this.getName(),
+                level, grade,
+                mentalSanity);
     }
 
 }
