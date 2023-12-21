@@ -6,7 +6,7 @@ public class Driver{
         Teacher t = new Teacher("Mr. Smith", 10);
         Teacher t2 = new Teacher("Mr. Jones", 10);
 
-        System.out.println(a.respond(t));
-        System.out.println(b.respond(t2));
+        System.out.println(a.encounter(t));
+        System.out.println(b.encounter(t2));
     }
 }

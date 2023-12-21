@@ -8,10 +8,20 @@ public class Teacher extends Member {
         this.HP = HP;
     }
 
+    //getters
+    public int getHP() {
+        return HP;
+    }
+
+    //setters
+    public void changeHP(int change) {
+        HP += change;
+    }
+
     public String respond(Student s) {
 
         // will get call a students's response method to continiously respond
-        int choice = (int) (Math.random() * 3);
+        int choice = (int) (Math.random() * 3) + 1;
         String response;
         if (HP == 0) {
             System.out.println("School Year is over!");
