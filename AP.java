@@ -13,7 +13,7 @@ public class AP extends Teacher {
         this.changeHP(-1);
         ;
         return String.format("AP \u001B[31m%s\u001B[0m has given student \u001B[35m%s\u001B[0m a test. %s",
-                this.getName(), s.getName(), s.getName(), pityStats(s, 2 * s.getLevel(), 3 * s.getLevel()));
+                this.getName(), s.getName(), pityStats(s, 2 * s.getLevel(), 3 * s.getLevel()));
     }
 
     @Override
@@ -22,7 +22,7 @@ public class AP extends Teacher {
         this.changeHP(-1);
 
         return String.format("AP \u001B[31m%s\u001B[0m has given student \u001B[35m%s\u001B[0m a test. %s",
-                this.getName(), s.getName(), s.getName(), pityStats(s, 2 * s.getLevel(), 3 * s.getLevel()));
+                this.getName(), s.getName(), pityStats(s, 2 * s.getLevel(), 3 * s.getLevel()));
     }
 
     @Override
