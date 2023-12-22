@@ -45,7 +45,7 @@ public class Student extends Member {
         grade -= level;
         return String.format("Student %s slept early! their grade is now %d and their mental sanity is now %d \n",
                 this.getName(), grade,
-                level);
+                mentalSanity);
 
     }
 

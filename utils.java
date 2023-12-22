@@ -12,7 +12,7 @@ public class utils {
                 return s.getName() + "have gone insane \n Game over";
             }
             // for scoping
-            String response = "ERROR";
+            String response = "";
             while (!valid) {
                 // giveing choices
                 utils.givePrompt(number, s, t);
