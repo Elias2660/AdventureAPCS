@@ -52,7 +52,7 @@ public class Teacher extends Member {
     }
 
     public String pityStats(Student s, int points_lost, int sanity_lost) {
-        String f = String.format("Student \\u001B[35m%s\\u001B[0m's has lose %d points and %d sanity \n %s", s.getName(), points_lost, sanity_lost, s.getStats());
+        String f = String.format("Student \u001B[35m%s\u001B[0m's has lost %d points and %d sanity \n %s", s.getName(), points_lost, sanity_lost, s.getStats());
         return f;
     }
 }
