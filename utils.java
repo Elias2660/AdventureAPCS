@@ -6,9 +6,9 @@ public class utils {
         try {
             Boolean valid = false;
             if (s.getGrade() <= 65) {
-                return s.getName() + " has failed \n Game over";
+                return s.getName() + " has failed \n Game over \n" + s.stats();
             } else if (s.getMentalSanity() <= 0) {
-                return s.getName() + "have gone insane \n Game over";
+                return s.getName() + "have gone insane \n Game over \n" + s.stats();
             }
             // for scoping
             String response = "";
@@ -28,6 +28,11 @@ public class utils {
                 } else if (choice == 3) {
                     System.out.println(s.ignore());
                     valid = !valid;
+                } else if (choice == 4) {
+                    System.out.println("You have quit the game");
+                    System.exit(0);
+                } else {
+                    System.out.println("Invalid input, please try again");
                 }
             }
             System.out.print(respondT(s, t, input, number + 1));
@@ -75,15 +80,16 @@ public class utils {
         System.out.print("\u001b[35m");
         System.out.println("3 to Ignore");
 
+        System.out.println("\033[1;91m4 to Quit");
         // reset
         System.out.print("\u001b[0m");
     }
 
     public static void givePrompt(int number, Student s, Teacher t) {
         if (number == 0) {
-            System.out.printf("Student %s had encountered %s \n", s.getName(), t.getName());
+            System.out.printf("Student %s had encountered %s \n What should they do? \n", s.getName(), t.getName());
         } else {
-            System.out.printf("Student %s is still in class with %s, with HP %d! \n", s.getName(),
+            System.out.printf("Student %s is still in class with %s, with HP %d! \n What should they do? \n", s.getName(),
                     t.getName(), t.getHP());
         }
     }
