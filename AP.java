@@ -9,29 +9,31 @@ public class AP extends Teacher {
 
     @Override
     public String giveTest(Student s) {
-        s.changeGrade(-4 * s.getLevel());
+        s.changeGrade(-8 * s.getLevel());
         this.changeHP(-1);
         ;
-        return "Your HP is " + this.getHP();
+        return String.format("AP \u001B[31m%s\u001B[0m has given student \u001B[35m%s\u001B[0m a test. %s",
+                this.getName(), s.getName(), s.getName(), pityStats(s, 2 * s.getLevel(), 3 * s.getLevel()));
     }
 
     @Override
     public String giveEC(Student s) {
-        s.changeGrade(-2 * s.getLevel());
+        s.changeGrade(2 * s.getLevel());
         this.changeHP(-1);
 
-        return "Your HP is " + this.getHP();
+        return String.format("AP \u001B[31m%s\u001B[0m has given student \u001B[35m%s\u001B[0m a test. %s",
+                this.getName(), s.getName(), s.getName(), pityStats(s, 2 * s.getLevel(), 3 * s.getLevel()));
     }
 
     @Override
     public String giveHomework(Student s) {
-        s.changeGrade(-2 * s.getLevel());
+        s.changeGrade(-4 * s.getLevel());
         s.changeSanity(-1);
         this.changeHP(-1);
         ;
 
-        return String.format("AP %s has given %s homework. Your sanity is now %d and grade is now %d",
-                this.getName(), s.getName(), s.getMentalSanity(), s.getGrade());
+        return String.format("AP \u001B[31m%s\u001B[0m has given student \u001B[35m%s\u001B[0m a test. %s",
+                this.getName(), s.getName(), s.getName(), pityStats(s, 2 * s.getLevel(), 3 * s.getLevel()));
     }
 
     public String stats() {
@@ -40,7 +42,7 @@ public class AP extends Teacher {
 
     @Override
     public int getOption() {
-        return 4;
+        return 3;
     }
 
 }
