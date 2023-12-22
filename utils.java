@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class utils {
-
     public static String respondS(Student s, Teacher t, Scanner input, int number) {
         // will call a teacher's method to respond
         try {
