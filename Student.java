@@ -62,6 +62,8 @@ public class Student extends Member {
                 mentalSanity);
     }
 
+
+
     public String refresh() {
         grade = 95 + 2 * level;
         mentalSanity = 50 + level;
