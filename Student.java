@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Student extends Member {
     // students will have a name and a grade level
     private int level = 9;
@@ -9,10 +7,11 @@ public class Student extends Member {
     public Student(String name) {
         super(name);
     }
-    //getters
+
+    // getters
     public int getLevel() {
         return level;
-}
+    }
 
     public int getMentalSanity() {
         return mentalSanity;
@@ -21,6 +20,7 @@ public class Student extends Member {
     public int getGrade() {
         return grade;
     }
+
     // SETTERS
     public void changeSanity(int change) {
         mentalSanity += change;
@@ -32,12 +32,12 @@ public class Student extends Member {
     // METHODS
 
     // there should be an encounter item! we need to implementent that
-    
+
     public String study() {
         grade += 3;
         mentalSanity -= level;
-        return String.format("Student %s have studied! their grade is now %d and their mental sanity is now %d \n",
-                this.getName(), grade, level);
+        String f = String.format("Student \u001B[35m%s\u001B[0m has \u001B[45mstudied\u001B[0m!\n%s", this.getName(), this.stats());
+        return f;
     }
 
     public String sleepEarly() {
@@ -51,23 +51,22 @@ public class Student extends Member {
 
     public String ignore() {
         grade -= 5;
-        return String.format(
-                "Student %s decided to ignore everything! their grade is now %d and their mental sanity is still %d \n",
-                this.getName(), grade, level);
+        mentalSanity++;
+        String f = String.format("Student \u001B[35m%s\u001B[0m has decided to \u001B[45mignore\u001B[0m!\n%s", this.getName(), this.stats());
+        return f;
     }
 
     @Override
     public String stats() {
-        return String.format("Student Name: %s \n Level: %d \n Grade: %d \n Mental Sanity: %d \n", this.getName(),
-                level, grade,
+        return String.format("Student %s has a grade of %d and a mental sanity of %d\n", this.getName(), grade,
                 mentalSanity);
     }
 
     public String refresh() {
-        grade = 95 + 2*level;
+        grade = 95 + 2 * level;
         mentalSanity = 50 + level;
         level++;
-        return String.format("Student %s has refreshed! their grade is now %d and their mental sanity is now %d \n",
-                this.getName(), grade, level);
+        String f = String.format("Student \u001B[35m%s\u001B[0m has \\u001B[45mrefreshed\\u001B[0m!\n%s", this.getName(), this.stats());
+        return f;
     }
 }
